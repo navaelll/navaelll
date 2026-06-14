@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maafin Vael Ya? 🥺</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 450px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ff7675;
+        }
+
+        .gif-container img {
+            width: 150px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #b2bec3;
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            height: 50px;
+            position: relative;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        #btn-yes {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        #btn-yes:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+
+        #btn-no {
+            background-color: #e74c3c;
+            color: white;
+            position: absolute;
+        }
+
+        /* Success Screen */
+        .hidden {
+            display: none !important;
+        }
+
+        .success-title {
+            color: #2ecc71;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="main-card">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/7SF5scGB2AFrCQQw37/giphy.gif" alt="Sad Bear" id="main-gif">
+        </div>
+        <h1>Maaf ya, Sayang... 🥺</h1>
+        <p>
+            Aku bener-bener minta maaf tadi <span class="highlight">keasikan voice di Discord</span> bareng temen sampe lupa ngabarin kamu... Aku nyesel banget pas liat kamu sampe ngehapusin chat lagi. Jangan ambek lagi ya? Memaafkan adalah perbuatan mulia tauu hehe.
+        </p>
+        
+        <div class="btn-group">
+            <button id="btn-yes" onclick="accepted()">Dimaafin</button>
+            <button id="btn-no" onmouseover="moveButton()" onclick="moveButton()">Engga!</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="success-card">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3N0MDh3N3g1N2N5amZ4dnd6eG16bTF5b3M0bXN5bnd6cmR0Yzh6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0amJzR37vjh7uRcQ/giphy.gif" alt="Happy Dance">
+        </div>
+        <h1 class="success-title">Yay! Makasih! ❤️</h1>
+        <p>Makasih udah dimaafin. Janji deh nanti-nanti kalo mau VC/mabar bakal langsung ngabarin kamu duluan. *Virtual hug* 🤗</p>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('btn-no');
+        const yesBtn = document.getElementById('btn-yes');
+        const mainCard = document.getElementById('main-card');
+        const successCard = document.getElementById('success-card');
+        const mainGif = document.getElementById('main-gif');
+        
+        let clickCount = 0;
+
+        // Fungsi biar tombol "Engga" kabur pas dideketin kursor/diklik di HP
+        function moveButton() {
+            clickCount++;
+            
+            // Setelah 3 kali usaha ngeklik "Engga", ganti GIF-nya jadi makin sedih
+            if(clickCount === 3) {
+                mainGif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnd5N3phYTh6N2RtczN4M3BpdXlyMnduZnYwMnN5Y2FvdmxmdjA0eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9Y5BbDSkSTiY8/giphy.gif";
+            }
+
+            // Batasan area tombol bergerak biar ga keluar dari layar
+            const padding = 50;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+            
+            // Karena tombol posisinya absolute, kita acak posisinya di layar
+            const randomX = Math.random() * (maxX - padding) + padding;
+            const randomY = Math.random() * (maxY - padding) + padding;
+            
+            // Pindahin tombol ke luar container utama (biar beneran kabur ke seluruh layar)
+            document.body.appendChild(noBtn);
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            
+            // Besarkan sedikit ukuran tombol "Dimaafin" setiap kali tombol "Engga" kabur
+            let currentScale = yesBtn.style.transform ? parseFloat(yesBtn.style.transform.replace('scale(', '')) : 1;
+            if (currentScale < 2) {
+                yesBtn.style.transform = `scale(${currentScale + 0.15})`;
+            }
+        }
+
+        // Fungsi pas tombol "Dimaafin" diklik
+        function accepted() {
+            mainCard.classList.add('hidden');
+            successCard.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
