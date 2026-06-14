@@ -3,107 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maafin Vael Ya? 🥺</title>
+    <title>maaf ya jeya, i miss u sm :c</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #121212;
-            color: #ffffff;
+            background: linear-gradient(135deg, #0f0c20 0%, #15102a 50%, #060409 100%);
+            color: #f3f0ff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             overflow: hidden;
             padding: 20px;
+            perspective: 1000px;
         }
 
+        /* Efek Kaca Premium (Glassmorphism) */
         .container {
             text-align: center;
             background: rgba(255, 255, 255, 0.03);
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 450px;
+            padding: 45px 35px;
+            border-radius: 24px;
+            backdrop-filter: blur(16px) saturate(120%);
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            max-width: 420px;
             width: 100%;
-            transition: all 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1s ease-out;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: #ff7675;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+            color: #ff788a;
+            text-shadow: 0 0 15px rgba(255, 120, 138, 0.3);
+        }
+
+        .gif-container {
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
         }
 
         .gif-container img {
-            width: 150px;
-            margin-bottom: 20px;
-            border-radius: 10px;
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%; /* Bikin bulat estetik */
+            border: 3px solid rgba(255, 120, 138, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
         p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #b2bec3;
-            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #cbc6dc;
+            margin-bottom: 35px;
+            font-weight: 400;
         }
 
         .highlight {
-            color: #fff;
-            font-weight: bold;
+            color: #ffffff;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 6px;
         }
 
+        /* Desain Tombol Modern */
         .btn-group {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
-            height: 50px;
+            gap: 15px;
+            min-height: 50px;
             position: relative;
         }
 
         button {
-            padding: 12px 30px;
-            font-size: 1rem;
-            font-weight: bold;
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
             border: none;
-            border-radius: 25px;
+            border-radius: 14px;
             cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         #btn-yes {
-            background-color: #2ecc71;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
             color: white;
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
         }
 
         #btn-yes:hover {
-            background-color: #27ae60;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.5);
         }
 
         #btn-no {
-            background-color: #e74c3c;
-            color: white;
+            background: rgba(255, 255, 255, 0.08);
+            color: #e4e1f4;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: absolute;
         }
 
-        /* Success Screen */
+        #btn-no:hover {
+            background: rgba(231, 76, 60, 0.2);
+            color: #ff7675;
+            border-color: rgba(231, 76, 60, 0.3);
+        }
+
+        /* Halaman Sukses */
         .hidden {
             display: none !important;
+            opacity: 0;
+            transform: scale(0.9);
         }
 
         .success-title {
             color: #2ecc71;
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .success-gif img {
+            border-color: rgba(46, 204, 113, 0.2) !important;
         }
     </style>
 </head>
@@ -111,25 +156,25 @@
 
     <div class="container" id="main-card">
         <div class="gif-container">
-            <img src="https://media.giphy.com/media/7SF5scGB2AFrCQQw37/giphy.gif" alt="Sad Bear" id="main-gif">
+            <img src="https://media.giphy.com/media/7SF5scGB2AFrCQQw37/giphy.gif" alt="Sad Memelas" id="main-gif">
         </div>
-        <h1>Maaf ya, Sayang... 🥺</h1>
+        <h1>Maafin vael yaa, i know it's hurt but i still love you</h1>
         <p>
-            Aku bener-bener minta maaf tadi <span class="highlight">keasikan voice di Discord</span> bareng temen sampe lupa ngabarin kamu... Aku nyesel banget pas liat kamu sampe ngehapusin chat lagi. Jangan ambek lagi ya? Memaafkan adalah perbuatan mulia tauu hehe.
+            haii.. maafin aku ya kalo aku banyak salahnya sama kamu maafin aku karena aku gabisa <span class="highlight">ngertiin perasaan kamu, gabisa jadi cowo yang baik :c</span> maaf yaa bb, aku berharap kamu maafin aku soalnya aku kangen sama kamu, aku nyesel banget pas liat kamu sampe ngehapusin chat lagi, apalagi kamu sampai ngeblock aku gara gara hal ini.. uewuweuwu jujyur sedi bgt, yaudaa maafin aku ya? i love you so much, semoga aku dimamapin yah sama kamu hehe.
         </p>
         
         <div class="btn-group">
-            <button id="btn-yes" onclick="accepted()">Dimaafin</button>
-            <button id="btn-no" onmouseover="moveButton()" onclick="moveButton()">Engga!</button>
+            <button id="btn-yes" onclick="accepted()">maafin vae</button>
+            <button id="btn-no" onmouseover="moveButton()" onclick="moveButton()">engga mw</button>
         </div>
     </div>
 
     <div class="container hidden" id="success-card">
-        <div class="gif-container">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3N0MDh3N3g1N2N5amZ4dnd6eG16bTF5b3M0bXN5bnd6cmR0Yzh6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0amJzR37vjh7uRcQ/giphy.gif" alt="Happy Dance">
+        <div class="gif-container success-gif">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3N0MDh3N3g1N2N5amZ4dnd6eG16bTF5b3M0bXN5bnd6cmR0Yzh6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0amJzR37vjh7uRcQ/giphy.gif" alt="Happy Cute">
         </div>
-        <h1 class="success-title">Yay! Makasih! ❤️</h1>
-        <p>Makasih udah dimaafin. Janji deh nanti-nanti kalo mau VC/mabar bakal langsung ngabarin kamu duluan. *Virtual hug* 🤗</p>
+        <h1 class="success-title">Yeay,Makasih ya bb! ❤️</h1>
+        <p>Makasih ya kamu udah mau maafin aku dengan tanpa paksaan mencetnya, kalo aku ada salah dikasi tau ya jangan tiba tiba ngeblock gitu ;c, aku jujur ga bisa kalo tiba tiba di block gitu walaupun aku salah, tapi jangan akunya dikasarin ya?, makasii yaa sayangku. *Virtual hug* 🤗</p>
     </div>
 
     <script>
@@ -141,41 +186,45 @@
         
         let clickCount = 0;
 
-        // Fungsi biar tombol "Engga" kabur pas dideketin kursor/diklik di HP
         function moveButton() {
             clickCount++;
             
-            // Setelah 3 kali usaha ngeklik "Engga", ganti GIF-nya jadi makin sedih
+            // GIF ganti makin memelas di percobaan ke-3 kabur
             if(clickCount === 3) {
                 mainGif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnd5N3phYTh6N2RtczN4M3BpdXlyMnduZnYwMnN5Y2FvdmxmdjA0eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9Y5BbDSkSTiY8/giphy.gif";
             }
 
-            // Batasan area tombol bergerak biar ga keluar dari layar
-            const padding = 50;
+            const padding = 60;
             const maxX = window.innerWidth - noBtn.offsetWidth - padding;
             const maxY = window.innerHeight - noBtn.offsetHeight - padding;
             
-            // Karena tombol posisinya absolute, kita acak posisinya di layar
             const randomX = Math.random() * (maxX - padding) + padding;
             const randomY = Math.random() * (maxY - padding) + padding;
             
-            // Pindahin tombol ke luar container utama (biar beneran kabur ke seluruh layar)
             document.body.appendChild(noBtn);
             
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
             
-            // Besarkan sedikit ukuran tombol "Dimaafin" setiap kali tombol "Engga" kabur
+            // Tombol "maafin vae" otomatis membesar anggun setiap kali tombol "engga mw" kabur
             let currentScale = yesBtn.style.transform ? parseFloat(yesBtn.style.transform.replace('scale(', '')) : 1;
-            if (currentScale < 2) {
-                yesBtn.style.transform = `scale(${currentScale + 0.15})`;
+            if (currentScale < 1.8) {
+                yesBtn.style.transform = `scale(${currentScale + 0.12})`;
             }
         }
 
-        // Fungsi pas tombol "Dimaafin" diklik
         function accepted() {
-            mainCard.classList.add('hidden');
-            successCard.classList.remove('hidden');
+            mainCard.style.opacity = '0';
+            mainCard.style.transform = 'scale(0.9) translateY(-20px)';
+            
+            setTimeout(() => {
+                mainCard.classList.add('hidden');
+                successCard.classList.remove('hidden');
+                // Trigger reflow
+                successCard.offsetHeight;
+                successCard.style.opacity = '1';
+                successCard.style.transform = 'scale(1) translateY(0)';
+            }, 300);
         }
     </script>
 </body>
