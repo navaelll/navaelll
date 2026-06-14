@@ -16,8 +16,8 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0f0c20 0%, #15102a 50%, #060409 100%);
-            color: #f3f0ff;
+            background: #ffffff; /* Mengubah background menjadi putih bersih */
+            color: #333333; /* Mengubah warna teks utama agar kontras */
             font-family: 'Plus Jakarta Sans', sans-serif;
             display: flex;
             justify-content: center;
@@ -26,22 +26,25 @@
             overflow: hidden;
             padding: 20px;
             perspective: 1000px;
+            position: relative;
         }
 
-        /* Efek Kaca Premium (Glassmorphism) */
+        /* Container Efek Kaca di Atas Background Putih */
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.75);
             padding: 45px 35px;
             border-radius: 24px;
-            backdrop-filter: blur(16px) saturate(120%);
-            -webkit-backdrop-filter: blur(16px) saturate(120%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px) saturate(100%);
+            -webkit-backdrop-filter: blur(10px) saturate(100%);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             max-width: 420px;
             width: 100%;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             animation: fadeIn 1s ease-out;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 10;
         }
 
         @keyframes fadeIn {
@@ -52,10 +55,10 @@
         h1 {
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 18px;
-            color: #ff788a;
-            text-shadow: 0 0 15px rgba(255, 120, 138, 0.3);
+            color: #ff526c; /* Warna pink/merah hati yang lebih tegas di layar putih */
+            text-shadow: 0 2px 10px rgba(255, 82, 108, 0.15);
         }
 
         .gif-container {
@@ -68,29 +71,28 @@
             width: 140px;
             height: 140px;
             object-fit: cover;
-            border-radius: 50%; /* Bikin bulat estetik */
-            border: 3px solid rgba(255, 120, 138, 0.2);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            border: 3px solid rgba(255, 82, 108, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
 
         p {
             font-size: 0.95rem;
             line-height: 1.7;
-            color: #cbc6dc;
+            color: #555555;
             margin-bottom: 35px;
             font-weight: 400;
         }
 
         .highlight {
-            color: #ffffff;
+            color: #ff526c;
             font-weight: 600;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 82, 108, 0.08);
             padding: 2px 8px;
             border-radius: 6px;
         }
 
-        /* Desain Tombol Modern */
         .btn-group {
             display: flex;
             justify-content: center;
@@ -112,30 +114,29 @@
         }
 
         #btn-yes {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            background: linear-gradient(135deg, #ff6b81 0%, #ff4757 100%);
             color: white;
-            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 107, 129, 0.3);
         }
 
         #btn-yes:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.5);
+            box-shadow: 0 8px 25px rgba(255, 107, 129, 0.5);
         }
 
         #btn-no {
-            background: rgba(255, 255, 255, 0.08);
-            color: #e4e1f4;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.05);
+            color: #666666;
+            border: 1px solid rgba(0, 0, 0, 0.03);
             position: absolute;
         }
 
         #btn-no:hover {
-            background: rgba(231, 76, 60, 0.2);
-            color: #ff7675;
-            border-color: rgba(231, 76, 60, 0.3);
+            background: rgba(231, 76, 60, 0.1);
+            color: #ff4757;
+            border-color: rgba(231, 76, 60, 0.2);
         }
 
-        /* Halaman Sukses */
         .hidden {
             display: none !important;
             opacity: 0;
@@ -144,11 +145,29 @@
 
         .success-title {
             color: #2ecc71;
-            text-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.15);
         }
 
         .success-gif img {
             border-color: rgba(46, 204, 113, 0.2) !important;
+        }
+
+        /* Elemen Efek Hati Pixel Berjatuhan */
+        .heart {
+            position: absolute;
+            top: -20px;
+            font-size: 20px;
+            color: #ff6b81;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+            }
         }
     </style>
 </head>
@@ -160,7 +179,7 @@
         </div>
         <h1>Maafin vael yaa, i know it's hurt but i still love you</h1>
         <p>
-            haii.. maafin aku ya kalo aku banyak salahnya sama kamu maafin aku karena aku gabisa <span class="highlight">ngertiin perasaan kamu, gabisa jadi cowo yang baik :c</span> maaf yaa bb, aku berharap kamu maafin aku soalnya aku kangen sama kamu, aku nyesel banget pas liat kamu sampe ngehapusin chat lagi, apalagi kamu sampai ngeblock aku gara gara hal ini.. uewuweuwu jujyur sedi bgt, yaudaa maafin aku ya? i love you so much, semoga aku dimamapin yah sama kamu hehe.
+            haii.. maafin aku ya kalo aku banyak salahnya sama kamu maafin aku karena aku gabisa <span class="highlight">ngertiin perasaan kamu,and gabisa jadi cowo yang baik buat kamu :c</span> aku berharap kamu maafin aku, aku nyesel banget pas liat kamu sampe ngehapusin chat lagi, apalagi kamu sampai ngeblock aku gutu euueueeu cry bangey jujyur sedi bgt, yaudaa maafin aku ya? i love you so much, semoga aku dimamapin yah sama kamu hehe.
         </p>
         
         <div class="btn-group">
@@ -173,8 +192,8 @@
         <div class="gif-container success-gif">
             <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3N0MDh3N3g1N2N5amZ4dnd6eG16bTF5b3M0bXN5bnd6cmR0Yzh6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0amJzR37vjh7uRcQ/giphy.gif" alt="Happy Cute">
         </div>
-        <h1 class="success-title">Yeay,Makasih ya bb! ❤️</h1>
-        <p>Makasih ya kamu udah mau maafin aku dengan tanpa paksaan mencetnya, kalo aku ada salah dikasi tau ya jangan tiba tiba ngeblock gitu ;c, aku jujur ga bisa kalo tiba tiba di block gitu walaupun aku salah, tapi jangan akunya dikasarin ya?, makasii yaa sayangku. *Virtual hug* 🤗</p>
+        <h1 class="success-title">Yeay,makasih ya bb! ❤️</h1>
+        <p>Makasih ya kamu udah mau maafin aku dengan tanpa paksaan mencetnya hwahehawe, kalo aku ada salah akunya dikasi tau ya, jangan tiba tiba ngeblock gitu ;c, aku jujur ga bisa kalo tiba tiba di block gitu atau ditinggalin gitu walaupun aku salah, tapi jangan akunya dikasarin ya?, makasii yaa sayangku. *Virtual hug* </p>
     </div>
 
     <script>
@@ -189,7 +208,6 @@
         function moveButton() {
             clickCount++;
             
-            // GIF ganti makin memelas di percobaan ke-3 kabur
             if(clickCount === 3) {
                 mainGif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnd5N3phYTh6N2RtczN4M3BpdXlyMnduZnYwMnN5Y2FvdmxmdjA0eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9Y5BbDSkSTiY8/giphy.gif";
             }
@@ -206,7 +224,6 @@
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
             
-            // Tombol "maafin vae" otomatis membesar anggun setiap kali tombol "engga mw" kabur
             let currentScale = yesBtn.style.transform ? parseFloat(yesBtn.style.transform.replace('scale(', '')) : 1;
             if (currentScale < 1.8) {
                 yesBtn.style.transform = `scale(${currentScale + 0.12})`;
@@ -220,12 +237,35 @@
             setTimeout(() => {
                 mainCard.classList.add('hidden');
                 successCard.classList.remove('hidden');
-                // Trigger reflow
                 successCard.offsetHeight;
                 successCard.style.opacity = '1';
                 successCard.style.transform = 'scale(1) translateY(0)';
             }, 300);
         }
+
+        // Script Otomatis bikin efek Hujan Hati Pixel / Estetik
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // Variasi stiker hati biasa dan pixel untuk background
+            const heartTypes = ['❤️', '💖', '💝', '💟'];
+            heart.innerText = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+            
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Kecepatan jatuh acak
+            heart.style.fontSize = Math.random() * 12 + 12 + "px"; // Ukuran acak biar estetik
+            heart.style.opacity = Math.random() * 0.5 + 0.2; // Transparansi biar ga ganggu teks utama
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Hati dibuat bergantian setiap 300 milidetik
+        setInterval(createHeart, 300);
     </script>
 </body>
 </html>
