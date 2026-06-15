@@ -20,6 +20,7 @@
       align-items: center;
       min-height: 100vh;
       padding: 20px;
+      overflow-x: hidden; /* Mencegah layar geser kanan-kiri di HP */
     }
     .container {
       background: white;
@@ -29,6 +30,7 @@
       max-width: 500px;
       width: 100%;
       text-align: center;
+      position: relative;
     }
 
     /* Ucapan Awal */
@@ -53,17 +55,17 @@
       font-size: 0.95rem;
       line-height: 1.6;
       color: #555;
-      margin-bottom: 30px;
+      margin-bottom: 35px; /* Ditambah biar ada space kosong sebelum tombol */
       text-align: justify;
     }
 
-    /* Container Tombol Biar Ga Nempel di HP */
+    /* Container Tombol Utama */
     .button-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 15px; /* Memberikan jarak antar tombol */
-      flex-wrap: wrap; /* Tombol otomatis turun rapi jika layar kekecilan */
+      gap: 20px; /* Jarak aman antar tombol */
+      min-height: 60px; /* Memastikan ada ruang buat tombol */
     }
 
     /* Styling Tombol */
@@ -74,7 +76,7 @@
       border: none;
       border-radius: 50px;
       cursor: pointer;
-      transition: transform 0.2s, background-color 0.2s;
+      transition: background-color 0.2s, transform 0.1s;
     }
     .btn-ya {
       background-color: #2ecc71;
@@ -82,18 +84,15 @@
     }
     .btn-ya:hover {
       background-color: #27ae60;
-      transform: scale(1.05);
     }
+    
     .btn-ga {
       background-color: #e74c3c;
       color: white;
-    }
-    /* Mengatur posisi absolut untuk tombol engga mw saat di-hover */
-    #btn-ga-id {
-      position: relative; 
+      z-index: 999; /* Biar pas melayang ga ketutupan teks */
     }
 
-    /* Halaman Sukses (Sembunyi Dulu) */
+    /* Halaman Sukses */
     .hidden {
       display: none;
     }
@@ -114,46 +113,4 @@
     <h1>Maafin vael yaa, i know it's hurt but i still love you</h1>
     
     <p class="surat">
-      haii.. maafin aku ya kalo aku banyak salahnya sama kamu maafin aku karena aku gabisa ngertiin perasaan kamu, and gabisa jadi cowo yang baik buat kamu :c aku berharap kamu maafin aku, aku nyesel banget pas liat kamu sampe ngehapusin chat lagi, apalagi kamu sampai ngeblock aku gutu euueueeu cry bangey jujyur sedi bgt, yaudaa maafin aku ya? i love you so much, semoga aku dimamapin yah sama kamu hehe.
-    </p>
-
-    <div class="button-container">
-      <button class="btn-ya" onclick="maafDiterima()">maafin vae</button>
-      <button class="btn-ga" id="btn-ga-id" onmouseover="pindahTombol()" onclick="pindahTombol()">engga mw</button>
-    </div>
-  </div>
-
-  <div class="container hidden" id="konten-sukses">
-    <img class="gif-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3N0MDh3N3g1N2N5amZ4dnd6eG16bTF5b3M0bXN5bnd6cmR0Yzh6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0amJzR37vjh7uRcQ/giphy.gif" alt="Happy Cute">
-    
-    <h1 class="success-title">Yeay, makasih ya bb! ❤️</h1>
-    
-    <p class="surat" style="text-align: center;">
-      Makasih ya kamu udah mau maafin aku dengan tanpa paksaan mencetnya hwahehawe, kalo aku ada salah akunya dikasi tau ya, jangan tiba tiba ngeblock gitu ;c, aku jujur ga bisa kalo tiba tiba di block gitu atau ditinggalin gitu walaupun aku salah, tapi jangan akunya dikasarin ya?, makasii yaa sayangku. *Virtual hug*
-    </p>
-  </div>
-
-  <script>
-    // Fungsi ketika tombol 'maafin vae' diklik
-    function maafDiterima() {
-      document.getElementById('konten-utama').classList.add('hidden');
-      document.getElementById('konten-sukses').classList.remove('hidden');
-    }
-
-    // Fungsi biar tombol 'engga mw' pindah-pindah pas mau diklik/didekati
-    function pindahTombol() {
-      const btnGa = document.getElementById('btn-ga-id');
-      
-      // Mengubah posisi jadi absolut agar bisa acak di dalam layar
-      btnGa.style.position = 'absolute';
-      
-      // Menghitung batas acak agar tidak keluar layar laptop/HP
-      const x = Math.random() * (window.innerWidth - btnGa.offsetWidth - 20);
-      const y = Math.random() * (window.innerHeight - btnGa.offsetHeight - 20);
-      
-      btnGa.style.left = x + 'px';
-      btnGa.style.top = y + 'px';
-    }
-  </script>
-</body>
-</html>
+      haii.. maafin aku ya kalo aku banyak salahnya sama kamu maafin aku karena
