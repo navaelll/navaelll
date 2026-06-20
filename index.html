@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Animasi Hati</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .heart {
+            width: 100px;
+            height: 100px;
+            background-color: #ff0055;
+            position: relative;
+            transform: rotate(-45deg);
+            animation: beat 1s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background-color: #ff0055;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before { top: -50px; left: 0; }
+        .heart::after { left: 50px; top: 0; }
+
+        @keyframes beat {
+            0% { transform: rotate(-45deg) scale(1); }
+            50% { transform: rotate(-45deg) scale(1.2); }
+            100% { transform: rotate(-45deg) scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heart"></div>
+
+</body>
+</html>
